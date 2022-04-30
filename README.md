@@ -1,4 +1,4 @@
-# wp-flocss-rem-fromSPの使い方
+# wp-flocss-rem-fromPCの使い方
 
 - WordPressTheme/style.css の名前をテーマ名に変更する
 - localで作成、ログイン
