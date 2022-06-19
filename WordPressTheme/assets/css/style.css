@@ -1,3 +1,16 @@
+/* フォームリセット
+---------------------------------------------------------------------------- */
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+label {
+	cursor: pointer;
+	display: block;
+}
+
 fieldset,
 legend {
 	-webkit-appearance: none;
@@ -11,13 +24,23 @@ legend {
 	padding: 0;
 }
 
+input,
+select,
+optgroup,
+textarea {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	margin: 0;
+}
+
 input[type="date"],
 input[type="datetime-local"],
 input[type="month"],
 input[type="time"] {
 	border: 1px solid #ccc;
 	font-size: 1rem;
-	margin: 0;
 	outline: none;
 	padding: 0.25rem;
 }
@@ -36,19 +59,19 @@ select {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	background: none;
-	border: 1px solid #1b224c;
+	background-image: none;
 	border-radius: 0;
-	font-size: 1rem;
 	margin-left: 0;
 	margin-right: 0;
 	outline: none;
-	padding: 0.6875rem 1.25rem;
 }
 
 textarea {
+	-ms-overflow-style: scrollbar;
+	display: block;
 	height: 6.25rem;
 	overflow: auto;
+	resize: vertical;
 	width: 100%;
 }
 
@@ -58,10 +81,12 @@ select {
 	background-repeat: no-repeat;
 	background-size: 0.75rem 0.75rem;
 	padding-right: 1.875rem;
+	text-transform: none;
 }
 
 .select {
 	background: #fff;
+	cursor: pointer;
 	display: inline-block;
 	overflow: hidden;
 	position: relative;
@@ -128,35 +153,44 @@ legend {
 
 /* button */
 
+input[type="submit"] {
+	-webkit-appearance: none;
+	background-color: inherit;
+	background-image: none;
+	display: inline-block;
+	margin-bottom: 0;
+	margin-top: 0;
+	text-decoration: none;
+}
+
+input[type="submit"]::-moz-foucus-inner {
+	border: none;
+	padding: 0;
+}
+
 input[type="reset"],
 input[type="button"] {
 	-webkit-box-sizing: content-box;
 	-webkit-appearance: button;
 	-moz-appearance: button;
 	appearance: button;
-	background: #efefef;
 	border: 1px solid #999;
 	border-radius: 0;
 	color: #000;
 	cursor: pointer;
 	display: inline-block;
 	font-size: 1.25rem;
-	margin: 0;
 	padding: 0.625rem 1.875rem;
 }
 
 /* ブラウザ対策
 ---------------------------------------------------------------------------- */
 
-/* Firefox */
-
 /* IE */
 
 select::-ms-expand {
 	display: none;
 }
-
-/* webkit */
 
 /* iOS */
 
@@ -189,14 +223,7 @@ input[type="search"]::-webkit-search-decoration {
 /* 挙動
 ---------------------------------------------------------------------------- */
 
-/* hover */
-
 /* focus */
-
-input:focus,
-textarea:focus {
-	border-color: #ccc;
-}
 
 input[type="submit"]:focus,
 input[type="reset"]:focus,
@@ -228,30 +255,28 @@ input[type="checkbox"]:disabled + span::before {
 	cursor: not-allowed;
 }
 
-/* バリデーション */
-
 /* placeholder */
-
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-	color: #b4b4b4;
-	font-size: 0.75rem;
-	padding-top: 0.3125rem;
-}
 
 input::-moz-placeholder,
 textarea::-moz-placeholder {
 	color: #b4b4b4;
 	font-size: 0.75rem;
-	padding-top: 0.3125rem;
 }
 
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
 	color: #b4b4b4;
 	font-size: 0.75rem;
-	padding-top: 0.3125rem;
 }
+
+input::placeholder,
+textarea::placeholder {
+	color: #b4b4b4;
+	font-size: 0.75rem;
+}
+
+/* リセットCSS
+---------------------------------------------------------------------------- */
 
 *,
 *::before,
@@ -267,6 +292,10 @@ html {
 
 html {
 	scroll-behavior: smooth;
+}
+
+:target {
+	scroll-margin-top: 60px;
 }
 
 html,
@@ -319,9 +348,9 @@ img {
 	max-width: 100%;
 	object-fit: cover;
 	object-position: center;
-	vertical-align: bottom;
 }
 
+h1,
 h2,
 h3,
 h4,
@@ -330,11 +359,16 @@ h6 {
 	font-weight: 400;
 }
 
+a,
+dl,
+dt,
+dd,
 article,
 aside,
 details,
 figcaption,
 figure,
+picture,
 footer,
 header,
 hgroup,
@@ -431,9 +465,14 @@ button {
 	outline: none;
 	padding: 0;
 	text-decoration: none;
+	text-transform: none;
 }
 
-video,
+video {
+	border: none;
+	height: auto;
+}
+
 iframe,
 object {
 	border: none;
@@ -483,16 +522,6 @@ strong {
 	font-weight: 700;
 }
 
-form {
-	margin: 0;
-	padding: 0;
-}
-
-label {
-	cursor: pointer;
-	display: block;
-}
-
 a,
 area,
 button,
@@ -503,31 +532,6 @@ summary,
 textarea,
 [tabindex] {
 	touch-action: manipulation;
-}
-
-input,
-select,
-optgroup,
-textarea {
-	font-family: inherit;
-	font-size: inherit;
-	line-height: inherit;
-	margin: 0;
-}
-
-button,
-select {
-	text-transform: none;
-}
-
-select {
-	cursor: pointer;
-}
-
-textarea {
-	-ms-overflow-style: scrollbar;
-	overflow: auto;
-	resize: vertical;
 }
 
 dialog {
@@ -557,7 +561,8 @@ summary {
 	display: list-item;
 }
 
-/* Remove all animations and transitions for people that prefer not to see them */
+/* CSS
+---------------------------------------------------------------------------- */
 
 .l-inner {
 	margin-left: auto;
